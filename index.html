@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación: Salud Mental en el Trabajo</title>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    body {
+      font-family: sans-serif;
+      background: #1c1c1c;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      color: #ecf0f1;
+      animation: fadeIn 2s ease-in;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #ecf0f1;
+    }
+
+    #form-container {
+      background: #000000;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6), inset 0 0 10px #8e44ad;
+      animation: fadeIn 2s ease-in;
+      display: none;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #ecf0f1;
+    }
+
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+    }
+
+    input[type="submit"], .boton-comenzar, .boton-siguiente {
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    input[type="submit"]:hover,
+    .boton-comenzar:hover,
+    .boton-siguiente:hover {
+      background-color: #9b59b6;
+    }
+
+    #bienvenida {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    #bienvenida img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    #mensaje-final {
+      display: none;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    #mensaje-final img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
+    .pregunta {
+      display: none;
+    }
+    .pregunta.activa {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="bienvenida">
+    <h1>Bienvenidx</h1>
+    <h2>Evaluación sobre la capacitación: Salud Mental en el Trabajo</h2>
+    <img src="imagenes/1.jpg" alt="Bienvenida">
+    <p>Tu opinión nos ayuda a construir ambientes laborales más sanos y empáticos.</p>
+    <button class="boton-comenzar" onclick="mostrarFormulario()">Comenzar Evaluación</button>
+  </div>
+
+  <div id="form-container">
+    <form id="formulario" action="https://formsubmit.co/TUEMAIL@gmail.com" method="POST" onsubmit="mostrarMensajeFinal(event)">
+      <div class="pregunta activa">
+        <label>1. ¿Cómo calificarías la capacitación en general?</label>
+        <select name="calificacion">
+          <option value="1">1 - Muy pobre</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5 - Excelente</option>
+        </select>
+      </div>
+
+      <div class="pregunta">
+        <label>2. ¿Qué tema te resultó más útil o significativo?</label>
+        <select name="tema_mas_util">
+          <option value="Riesgos psicosociales">Reconocimiento de riesgos psicosociales</option>
+          <option value="Sintomas">Detección temprana de síntomas</option>
+          <option value="Prevencion">Prevención organizacional e individual</option>
+          <option value="Ambiente">Promoción de un ambiente saludable e inclusivo</option>
+          <option value="Mitos">Mitos y estigmas sobre salud mental</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="pregunta">
+        <label>3. ¿Sentís que ahora podés identificar mejor señales tempranas de malestar emocional?</label>
+        <select name="identifica_senales">
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+          <option value="No seguro">No estoy segurx</option>
+        </select>
+      </div>
+
+      <div class="pregunta">
+        <label>4. ¿Considerás que el lugar donde trabajás promueve la salud mental laboral?</label>
+        <select name="promocion_salud_mental">
+          <option value="Activo">Sí, activamente</option>
+          <option value="Parcial">Lo intenta, pero aún falta</option>
+          <option value="No">No</option>
+          <option value="No responde">Prefiero no responder</option>
+        </select>
+      </div>
+
+      <div class="pregunta">
+        <label>5. ¿Te resultaron claras y aplicables las herramientas de prevención que se mencionaron?</label>
+        <select name="claridad_herramientas">
+          <option value="Totalmente">Sí, totalmente</option>
+          <option value="Parcialmente">Algunas sí, otras no</option>
+          <option value="No">No entendí bien cómo aplicarlas</option>
+        </select>
+      </div>
+
+      <div class="pregunta">
+        <label>6. ¿Qué mitos o ideas erróneas creés que es importante seguir desarmando?</label>
+        <textarea name="mitos_comentarios" rows="3" placeholder="Escribí tu respuesta aquí..."></textarea>
+      </div>
+
+      <div class="pregunta">
+        <label>7. Comentarios o sugerencias para mejorar esta capacitación:</label>
+        <textarea name="sugerencias" rows="3" placeholder="Dejanos tus sugerencias aquí..."></textarea>
+      </div>
+
+      <div class="pregunta">
+        <label>8. (Opcional) Nombre o apodo:</label>
+        <input type="text" name="nombre" placeholder="Escribí tu nombre o apodo">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="submit" value="Terminar evaluación">
+      </div>
+
+      <button type="button" class="boton-siguiente" onclick="mostrarSiguientePregunta()">Siguiente</button>
+    </form>
+  </div>
+
+  <div id="mensaje-final">
+    <h2>¡Gracias por participar!</h2>
+    <p>“Cuidar la salud mental no es una debilidad, es una forma de trabajar mejor y vivir mejor.”</p>
+    <img id="imagen-final" src="imagenes/1.jpg" alt="Mensaje final">
+  </div>
+
+  <script>
+    let preguntaActual = 0;
+    const preguntas = document.querySelectorAll('.pregunta');
+    const botonSiguiente = document.querySelector('.boton-siguiente');
+    const botonEnviar = document.querySelector('input[type="submit"]');
+
+    function mostrarFormulario() {
+      document.getElementById('bienvenida').style.display = 'none';
+      document.getElementById('form-container').style.display = 'block';
+      preguntas[0].classList.add('activa');
+    }
+
+    function mostrarSiguientePregunta() {
+      preguntas[preguntaActual].classList.remove('activa');
+      preguntaActual++;
+      if (preguntaActual < preguntas.length) {
+        preguntas[preguntaActual].classList.add('activa');
+        if (preguntaActual === preguntas.length - 1) {
+          botonSiguiente.style.display = 'none';
+          botonEnviar.style.display = 'block';
+        }
+      }
+    }
+
+    function mostrarMensajeFinal(e) {
+      e.preventDefault();
+      document.getElementById('formulario').submit();
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('mensaje-final').style.display = 'block';
+    }
+
+    window.onload = () => {
+      botonEnviar.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
